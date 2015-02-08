@@ -1,0 +1,9 @@
+<div class="stops-list col-md-3">
+  <ul>
+    <% for stop in @models: %>
+      <li>
+        <%= stop.get('name') %>
+      </li>
+    <% end %>
+  </ul>
+</div>

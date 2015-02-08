@@ -1,0 +1,21 @@
+<div class="routes-list col-md-3">
+  <ul>
+    <% for route in @models: %>
+      <li>
+        <% href = "#agencies/#{@agencyName}/routes/#{route.get('Code')}" %>
+        <% href = href + "/#{route.get('direction_code')}" if route.get('direction_code') %>
+        <a href='<%= href %>'>
+
+          <% if route.get('direction_code'): %>
+            <%= route.get 'Name' %>: <%= route.get 'direction_code' %>
+          <% else: %>
+            <%= route.get 'Name' %>
+          <% end %>
+
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div id='stop-list-outlet'></div>
