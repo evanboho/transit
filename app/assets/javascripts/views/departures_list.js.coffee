@@ -7,5 +7,5 @@ class TransIt.Views.DeparturesList extends Backbone.View
     this
 
   scrollToFocus: ->
-    $('html,body').animate(scrollTop: $(@el).offset().top, 100)
+    $('html,body').animate(scrollTop: $(@el).offset().top - $('header').height(), 100)
 
