@@ -8,11 +8,8 @@ class TransIt.Views.StopsList extends Backbone.View
   showDepartures: (e) ->
     e.preventDefault()
     stopId = $(e.target).data('stop-id')
-    # pathname = window.location.pathname.replace(/\/\d+\/departures/, '')
-    pathname = window.location.pathname.replace(/\/stops\/\d+\/?/, '')
-    TransIt.router.navigate "#{pathname}/stops/#{stopId}", { trigger: true }
-    # return false
-
+    pathname = window.location.pathname.replace(/\/stops\/\d+\/?/, '/stops')
+    TransIt.router.navigate "#{pathname}/#{stopId}", { trigger: true }
 
   render: (data)  ->
     $(@el).html(@template(data))
