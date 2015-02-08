@@ -11,16 +11,3 @@ class TransIt.Views.StopsList extends Backbone.View
     stopId = $(e.target).data('stop-id')
     pathname = window.location.pathname.replace(/\/stops\/\d+\/?/, '/stops')
     TransIt.router.navigate "#{pathname}/#{stopId}", { trigger: true }
-
-  render: (data)  ->
-    $(@el).html(@template(data))
-    this
-
-  scrollToFocus: ->
-    $('html,body').animate(scrollTop: $(@el).offset().top - $('header').height() - 15, 100)
-
-  scrollBack: (e) ->
-    e.stopPropagation()
-    index = $(@el).find('.scrolling-list').index('.scrolling-list')
-    $prevList = $(".scrolling-list:eq(#{index - 1})")
-    $('html,body').animate(scrollTop: $prevList.offset().top - $('header').height() - 15, 100)

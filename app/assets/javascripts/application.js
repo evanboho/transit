@@ -20,6 +20,7 @@
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections
+//= require ./views/view
 //= require_tree ./views
 //= require_tree ./routers
 //= require backbone.routefilter.min.js
