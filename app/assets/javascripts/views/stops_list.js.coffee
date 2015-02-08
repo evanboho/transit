@@ -4,6 +4,7 @@ class TransIt.Views.StopsList extends Backbone.View
 
   events:
     'click a[data-stop-id]': 'showDepartures'
+    'click img.up-arrow': 'scrollBack'
 
   showDepartures: (e) ->
     e.preventDefault()
@@ -17,3 +18,9 @@ class TransIt.Views.StopsList extends Backbone.View
 
   scrollToFocus: ->
     $('html,body').animate(scrollTop: $(@el).offset().top - $('header').height() - 15, 100)
+
+  scrollBack: (e) ->
+    e.stopPropagation()
+    index = $(@el).find('.scrolling-list').index('.scrolling-list')
+    $prevList = $(".scrolling-list:eq(#{index - 1})")
+    $('html,body').animate(scrollTop: $prevList.offset().top - $('header').height() - 15, 100)

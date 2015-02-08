@@ -17,6 +17,8 @@ header {
   position: fixed;
   width: 100vw;
   z-index: 1;
+  background-color: $main_green;
+  box-shadow: 0px 2px 5px $dark_green;
   h1 {
     a, a:active {
       color: $light_green;
@@ -28,8 +30,6 @@ header {
   }
   .container {
     margin: 0 auto;
-    background-color: $main_green;
-    box-shadow: 0px 2px 5px $dark_green;
     position: relative;
   }
   nav {

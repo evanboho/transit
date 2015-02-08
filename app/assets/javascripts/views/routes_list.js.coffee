@@ -16,7 +16,8 @@ class TransIt.Views.RoutesList extends Backbone.View
     assetPathFor: (path) ->
       $('#asset-paths').data('asset-paths')[path]
 
-  scrollBack: ->
+  scrollBack: (e) ->
+    e.stopPropagation()
     index = $(@el).find('.scrolling-list').index('.scrolling-list')
     $prevList = $(".scrolling-list:eq(#{index - 1})")
     $('html,body').animate(scrollTop: $prevList.offset().top - $('header').height() - 15, 100)

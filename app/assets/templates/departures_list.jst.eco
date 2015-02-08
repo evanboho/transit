@@ -4,7 +4,7 @@
     <% if @models.length: %>
       <li class='stop-name'><%= @models[0].get('stop_name') %></li>
       <% for departure in @models: %>
-        <li>
+        <li class='clearfix'>
           <span class='route-name'>
             <%= departure.get('route_name') %>:
           </span>
