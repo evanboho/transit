@@ -16,8 +16,9 @@ Rails.application.routes.draw do
   end
 
   resources :agencies, only: [:index] do
-    resources :routes, only: [:index, :show] do
-      get 'stops/:stop_id', to: 'stops#show'
+    resources :routes, only: [:index] do
+      get '(:direction)/stops', to: 'stops#index'
+      get '(:direction)/stops/:stop_id', to: 'departures#index'
     end
   end
 

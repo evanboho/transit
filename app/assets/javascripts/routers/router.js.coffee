@@ -3,14 +3,14 @@ class TransIt.Routers.Router extends Backbone.Router
   routes:
     'agencies': 'agenciesIndex'
     'agencies/:agencyName/routes': 'routesIndex'
-    'agencies/:agencyName/routes/:id(/:direction)': 'stopsIndex'
+    'agencies/:agencyName/routes/:id(/:direction)/stops': 'stopsIndex'
     'agencies/:agencyName/routes/:id(/:direction)/stops/:stopId': 'departuresIndex'
 
   agenciesIndex: (fn) ->
     render = (data) ->
       view = new TransIt.Views.AgenciesList
       $('#outlet').html(view.render(data).el)
-      fn.call(@) if fn?
+      fn.call(@) if typeof fn == 'function'
     agencies = new TransIt.Collections.Agencies
     if $('#outlet[data-agencies]').length
       agencies.reset $('#outlet').data('agencies')
@@ -25,7 +25,7 @@ class TransIt.Routers.Router extends Backbone.Router
     render = (data) ->
       view = new TransIt.Views.RoutesList
       $('#route-list-outlet').html(view.render(data).el)
-      fn.call(@) if fn?
+      fn.call(@) if typeof fn == 'function'
     fetchRoutes = ->
       if $('#outlet[data-routes]').length
         routes.reset $('#outlet').data('routes')
@@ -44,6 +44,7 @@ class TransIt.Routers.Router extends Backbone.Router
     render = (data) ->
       view = new TransIt.Views.StopsList
       $('#stop-list-outlet').html(view.render(data).el)
+      fn.call(@) if typeof fn == 'function'
     fetchStops = ->
       if $('#outlet[data-stops]').length
         stops.reset $('#outlet').data('stops')
@@ -73,6 +74,6 @@ class TransIt.Routers.Router extends Backbone.Router
     if $('#stop-list-outlet').length
       fetchDepartures()
     else
-      @stopsIndex stopsIndex, fetchDepartures
+      @stopsIndex agencyName, routeTag, direction, fetchDepartures
 
 

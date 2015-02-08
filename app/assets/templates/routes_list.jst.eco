@@ -4,6 +4,7 @@
       <li>
         <% href = "#agencies/#{@agencyName}/routes/#{route.get('code')}" %>
         <% href = href + "/#{route.get('direction_code')}" if route.get('direction_code') %>
+        <% href += '/stops' %>
         <a href='<%= href %>'>
 
           <% if route.get('direction_code'): %>
