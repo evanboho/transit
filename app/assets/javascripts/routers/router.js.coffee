@@ -1,12 +1,12 @@
 class TransIt.Routers.Router extends Backbone.Router
 
   routes:
-    '': 'index'
-    'agencies': 'index'
-    'agencies/:agencyName': 'show'
-    'agencies/:agencyName/routes/:id(/:direction)': 'routeShow'
+    'agencies': 'agenciesIndex'
+    'agencies/:agencyName/routes': 'routesIndex'
+    'agencies/:agencyName/routes/:id(/:direction)': 'stopsIndex'
+    'agencies/:agencyName/routes/:id(/:direction)/stops/:stopId': 'departuresIndex'
 
-  index: (fn) ->
+  agenciesIndex: (fn) ->
     render = (data) ->
       view = new TransIt.Views.AgenciesList
       $('#outlet').html(view.render(data).el)
@@ -20,7 +20,7 @@ class TransIt.Routers.Router extends Backbone.Router
       agencies.fetch
         success: render
 
-  show: (agencyName, fn) ->
+  routesIndex: (agencyName, fn) ->
     routes = new TransIt.Collections.Routes(agencyName: agencyName)
     render = (data) ->
       view = new TransIt.Views.RoutesList
@@ -37,9 +37,9 @@ class TransIt.Routers.Router extends Backbone.Router
     if $('#outlet').html().length
       fetchRoutes()
     else
-      @index fetchRoutes
+      @agenciesIndex fetchRoutes
 
-  routeShow: (agencyName, routeTag, direction) ->
+  stopsIndex: (agencyName, routeTag, direction, fn) ->
     stops = new TransIt.Collections.Stops(agencyName: agencyName, routeTag: routeTag, direction: direction)
     render = (data) ->
       view = new TransIt.Views.StopsList
@@ -55,5 +55,24 @@ class TransIt.Routers.Router extends Backbone.Router
     if $('#route-list-outlet').length
       fetchStops()
     else
-      @show agencyName, fetchStops
+      @routesIndex agencyName, fetchStops
+
+  departuresIndex: (agencyName, routeTag, direction, stopId) ->
+    departures = new TransIt.Collections.Departures(stopId: stopId)
+    render = (data) ->
+      view = new TransIt.Views.DeparturesList
+      $('#departure-list-outlet').html(view.render(data).el)
+    fetchDepartures = ->
+      if $('#outlet[data-departures]').length
+        departures.reset $('#outlet').data('departures')
+        $('#outlet').removeAttr('data-departures')
+        render departures
+      else
+        departures.fetch
+          success: render
+    if $('#stop-list-outlet').length
+      fetchDepartures()
+    else
+      @stopsIndex stopsIndex, fetchDepartures
+
 

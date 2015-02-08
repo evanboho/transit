@@ -7,7 +7,7 @@ class NokoProcessor
     nodes = doc.xpath(xpath)
     nodes.map do |node|
       attrs = node.attributes.map do |k,v|
-        [k, v.value]
+        [k.underscore, v.value]
       end
       Hash[attrs]
     end

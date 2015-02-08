@@ -2,8 +2,8 @@
   <ul>
     <% for agency in @models: %>
       <li>
-        <a href='#agencies/<%= agency.get('Name') %>'>
-          <%= agency.get('Name') %>
+        <a href='#agencies/<%= agency.get('name') %>/routes'>
+          <%= agency.get('name') %>
         </a>
       </li>
     <% end %>

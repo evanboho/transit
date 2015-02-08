@@ -2,8 +2,12 @@
   <ul>
     <% for stop in @models: %>
       <li>
-        <%= stop.get('name') %>
+        <a href='#' data-stop-id='<%= stop.get('stop_code') %>'>
+          <%= stop.get('name') %>
+        </a>
       </li>
     <% end %>
   </ul>
 </div>
+
+<div id="departure-list-outlet"></div>

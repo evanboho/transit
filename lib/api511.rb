@@ -15,8 +15,8 @@ module Api511
     if doc.xpath('//RouteDirection').length > 0
       doc.xpath('//RouteDirection').each do |node|
         node_hash = {}
-        node_hash[:Name] = node.xpath('ancestor::Route').attribute('Name').value
-        node_hash[:Code] = node.xpath('ancestor::Route').attribute('Code').value
+        node_hash[:name] = node.xpath('ancestor::Route').attribute('Name').value
+        node_hash[:code] = node.xpath('ancestor::Route').attribute('Code').value
         node_hash[:direction_code] = node.attribute('Code').value
         node_hash[:direction_name] = node.attribute('Name').value
         to_return << node_hash
@@ -32,6 +32,25 @@ module Api511
     route_id = [agency_name, route_tag, direction].compact.join('~')
     url = url_with_token(route, "routeIDF=#{route_id}")
     NokoProcessor.get_xml_from_api(url, '//Stop')
+  end
+
+  def self.get_departures_for_stop(stop_id)
+    route = 'GetNextDeparturesByStopCode.aspx'
+    url = url_with_token(route, "stopcode=#{stop_id}")
+    doc = Nokogiri::XML(open url)
+    to_return = []
+    doc.xpath('//DepartureTime').each do |node|
+      node_hash = {}
+      node_hash[:departure_time] = node.text
+      node_hash[:agency] = node.xpath('ancestor::Agency').attribute('Name').value
+      node_hash[:stop_name] = node.xpath('ancestor::Stop').attribute('name').value
+      node_hash[:stop_code] = node.xpath('ancestor::Stop').attribute('StopCode').value
+      node_hash[:route_name] = node.xpath('ancestor::Route').attribute('Name').value
+      node_hash[:route_code] = node.xpath('ancestor::Route').attribute('Code').value
+      to_return << node_hash
+    end
+    to_return
+
   end
 
   def self.url_with_token(route, *url_params)

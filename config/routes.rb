@@ -15,10 +15,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :agencies, only: [:index, :show] do
-    resources :routes, only: [:show]
+  resources :agencies, only: [:index] do
+    resources :routes, only: [:index, :show] do
+      get 'stops/:stop_id', to: 'stops#show'
+    end
   end
 
-  root to: 'static#show'
+  root to: redirect('/agencies')
 
 end

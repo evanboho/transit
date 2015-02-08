@@ -1,0 +1,11 @@
+<div class="departures-list col-md-3">
+  <ul>
+    <% for departure in @models: %>
+      <li>
+        <%= departure.get('route_name') %>
+        <%= departure.get('stop_name') %>
+        <%= departure.get('departure_time') %> minutes
+      </li>
+    <% end %>
+  </ul>
+</div>
