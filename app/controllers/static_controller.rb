@@ -1,7 +1,9 @@
 class StaticController < ApplicationController
 
-  def show
-    @agencies = Api511.get_remote_agencies
+  def home
+  end
+
+  def nearby
   end
 
 end

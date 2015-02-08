@@ -1,2 +1,0 @@
-module Nb::AgenciesHelper
-end

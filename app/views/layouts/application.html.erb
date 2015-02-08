@@ -29,5 +29,7 @@
   <%= yield %>
 </div>
 
+<%= content_tag 'script', '', id: 'asset-paths', data: { asset_paths: image_paths } %>
+
 </body>
 </html>

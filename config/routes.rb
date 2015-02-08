@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get '/nearby', to: 'static#show'
+  get '/nearby', to: 'static#nearby'
 
   namespace 'api511', path: '511' do
     resources :agencies, only: [:index] do
@@ -24,6 +24,6 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: 'static#show'
+  root to: 'static#home'
 
 end
