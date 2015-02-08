@@ -1,5 +1,5 @@
 <div class="departures-list scrolling-list col-md-3">
-  <img class='up-arrow visible-sm-block visible-xs-block' src='/assets/up-arrow-icon-small.png'>
+  <img class='up-arrow visible-sm-block visible-xs-block' src='<%= @assetPathFor "up-arrow-icon-small.png" %>'>
   <ul>
     <% if @models.length: %>
       <li class='stop-name'><%= @models[0].get('stop_name') %></li>
