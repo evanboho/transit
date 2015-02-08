@@ -1,11 +1,19 @@
-<div class="departures-list col-md-3">
-  <ul>
-    <% for departure in @models: %>
-      <li>
-        <%= departure.get('route_name') %>
-        <%= departure.get('stop_name') %>
-        <%= departure.get('departure_time') %> minutes
-      </li>
-    <% end %>
-  </ul>
+<div class="departures-list scrolling-list col-md-3">
+  <% if @models.length: %>
+    <ul>
+      <li class='stop-name'><%= @models[0].get('stop_name') %></li>
+      <% for departure in @models: %>
+        <li>
+          <span class='route-name'>
+            <%= departure.get('route_name') %>:
+          </span>
+          <div class='departure-time'>
+            <%= departure.get('departure_time') %> minutes
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% else: %>
+    <h3>No Departures for that stop.
+  <% end %>
 </div>

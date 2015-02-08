@@ -1,4 +1,4 @@
-<div class="stops-list col-md-3">
+<div class="stops-list scrolling-list col-md-3">
   <ul>
     <% for stop in @models: %>
       <li>

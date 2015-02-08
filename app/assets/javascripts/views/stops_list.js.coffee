@@ -14,3 +14,6 @@ class TransIt.Views.StopsList extends Backbone.View
   render: (data)  ->
     $(@el).html(@template(data))
     this
+
+  scrollToFocus: ->
+    $('html,body').animate(scrollTop: $(@el).offset().top, 100)

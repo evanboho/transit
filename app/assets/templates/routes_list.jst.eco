@@ -1,4 +1,4 @@
-<div class="routes-list col-md-3">
+<div class="routes-list scrolling-list col-md-3">
   <ul>
     <% for route in @models: %>
       <li>

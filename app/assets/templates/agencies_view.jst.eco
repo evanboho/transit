@@ -1,4 +1,4 @@
-<div class="agencies-list col-md-3">
+<div class="agencies-list scrolling-list col-md-3">
   <ul>
     <% for agency in @models: %>
       <li>

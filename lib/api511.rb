@@ -60,7 +60,7 @@ module Api511
   end
 
   def self.url_with_token(route, *url_params)
-    url_params << 'token=65a0fa17-c546-4755-a272-52616d81380b'
+    url_params << 'token=' + SITE_CONFIG[:api_token_511]
     (URL_BASE + route + '?' + url_params.join('&')).gsub(' ', '%20')
   end
 
