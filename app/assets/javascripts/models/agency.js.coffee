@@ -1,1 +1,1 @@
-window.Agency = Backbone.Model.extend
+window.Agency = Backbone.Model.extend()
