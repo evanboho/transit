@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :next_bus do
+  get 'routes/index'
+  end
+
   namespace :nb do
   get 'agencies/index'
   end
@@ -17,8 +21,9 @@ Rails.application.routes.draw do
   end
 
   namespace 'next_bus', path: 'nb' do
-    resources :agencies, only: [:index]
-
+    resources :agencies, only: [:index] do
+      resources :routes, only: [:index, :show]
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

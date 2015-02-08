@@ -1,0 +1,2 @@
+module NextBus::RoutesHelper
+end
