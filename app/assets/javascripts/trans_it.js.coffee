@@ -4,12 +4,16 @@ window.TransIt =
   Views: {}
   Routers: {}
   init: ->
-    new TransIt.Routers.IndexRouter()
+    @router = new TransIt.Routers.IndexRouter()
     Backbone.history.start(pushState: true)
 
-$(document).ready ->
+$ ->
   TransIt.init()
   Static.init()
+  $('#outlet').on 'click', 'a[href*=#]', ->
+    href = $(@).attr('href').replace('#', '')
+    TransIt.router.navigate href
+    return false
 
 Static =
 

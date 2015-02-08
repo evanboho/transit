@@ -1,1 +1,1 @@
-window.Agency = Backbone.Model.extend()
+class TransIt.Models.Agency extends Backbone.Model

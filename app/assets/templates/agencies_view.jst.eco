@@ -1,1 +1,13 @@
-Hey
+<div class="agency-list col-md-4">
+  <ul>
+    <% for agency in @models: %>
+      <li>
+        <a href='#agencies/<%= agency.get('Name') %>'>
+          <%= agency.get('Name') %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div id="route-list-outlet" class="route-list col-md-4"></div>

@@ -1,11 +1,4 @@
 Rails.application.routes.draw do
-  namespace :next_bus do
-  get 'routes/index'
-  end
-
-  namespace :nb do
-  get 'agencies/index'
-  end
 
   root to: 'static#show'
 
@@ -25,6 +18,8 @@ Rails.application.routes.draw do
       resources :routes, only: [:index, :show]
     end
   end
+
+  resources :agencies, only: [:index, :show]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

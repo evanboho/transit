@@ -1,4 +1,4 @@
-window.Agencies = Backbone.Collection.extend
-  model: Agency
+class TransIt.Collections.Agencies extends Backbone.Collection
+  model: TransIt.Models.Agency
 
-  url: '/v1/agencies'
+  url: '/511/agencies'
