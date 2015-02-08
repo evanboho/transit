@@ -1,7 +1,7 @@
 class NextBus::AgenciesController < NextBus::NextBusController
 
   def index
-    render json: NextBus.get_agencies
+    render json: NextBus.get_local_agencies
   end
 
 end
