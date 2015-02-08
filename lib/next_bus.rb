@@ -1,7 +1,11 @@
 module NextBus
   URL_BASE = 'http://webservices.nextbus.com/service/publicXMLFeed?'
 
-  def self.get_agencies
+  def self.get_local_agencies
+    NextBus::Agency.all
+  end
+
+  def self.get_remote_agencies
     NokoProcessor.get_xml_from_api(URL_BASE + 'command=agencyList', '//agency')
   end
 

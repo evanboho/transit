@@ -1,4 +1,12 @@
 namespace :import do
+
+  task :agencies do
+    NextBus.get_remote_agencies.each do |agency_attrs|
+      NextBus::Agency.find_by(tag: agency_attrs['tag']) ||
+      NextBus::Agency.create!(agency_attrs)
+    end
+  end
+
   task :routes, :agency_tag do |t, args|
     agency_tag = args.agency_tag
     agency = NextBus::Agency.find_by(tag: agency_tag)
@@ -17,4 +25,5 @@ namespace :import do
       end
     end
   end
+
 end

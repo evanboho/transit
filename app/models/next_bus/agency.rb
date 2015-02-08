@@ -5,4 +5,12 @@ class NextBus::Agency < ActiveRecord::Base
 
   alias_attribute :shortTitle, :short_title
   alias_attribute :regionTitle, :region_title
+
+  def as_json(args)
+    %w(id tag title short_title region_title).inject({}) do |h, attr_name|
+      h[attr_name] = self.send(attr_name)
+      h
+    end
+  end
+
 end
