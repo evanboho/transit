@@ -14,7 +14,6 @@ class TransIt.Routers.Router extends Backbone.Router
     agencies = new TransIt.Collections.Agencies
     if $('#outlet[data-agencies]').length
       agencies.reset $('#outlet').data('agencies')
-      $('#outlet').removeAttr('data-agencies')
       render(agencies)
     else
       agencies.fetch

@@ -7,5 +7,5 @@ class TransIt.Views.RoutesList extends Backbone.View
     this
 
   scrollToFocus: ->
-    $('html,body').animate(scrollTop: $(@el).offset().top - $('header').height(), 100)
+    $('html,body').animate(scrollTop: $(@el).offset().top - $('header').height() - 15, 100)
 

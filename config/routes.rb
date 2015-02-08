@@ -22,6 +22,6 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: redirect('/agencies')
+  root to: 'static#show'
 
 end
