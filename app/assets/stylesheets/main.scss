@@ -1,20 +1,75 @@
+@import 'variables';
+
 body {
   font-size: 16px;
   height: 100vh;
+}
+
+a {
+  text-decoration: none !important;
+  color: $dark_green;
+  &:hover, &:active {
+    color: $darkish_green;
+  }
 }
 
 header {
   position: fixed;
   width: 100vw;
   z-index: 1;
+  h1 {
+    a, a:active {
+      color: $light_green;
+      letter-spacing: 2px;
+      &:hover {
+        color: lighten($light_green, 10%);
+      }
+    }
+  }
   .container {
     margin: 0 auto;
-    background-color: #ccc;
+    background-color: $main_green;
+    box-shadow: 0px 2px 5px $dark_green;
   }
-}
-
-a {
-  text-decoration: none !important;
+  .container {
+    position: relative;
+  }
+  nav {
+    position: absolute;
+    right: 30px;
+    bottom: 0px;
+    ul {
+      list-style: none;
+      li {
+        padding: 0;
+        border: 1px solid $dark_blue;
+        border-bottom: 0px;
+        border-radius: 5px 5px 0 0;
+        float: left;
+        background-color: $darkish_blue;
+        a {
+          font-size: 14px;
+          color: lighten($light_blue, 30%);
+          display: block;
+          padding: 2px 20px;
+          &:hover {
+            color: lighten($light_blue, 40%);
+          }
+        }
+        &:hover {
+          background-color: $main_blue;
+          box-shadow: 0 0 8px 2px $darkish_blue inset;
+        }
+        &.active {
+          background-color: $main_blue;
+          box-shadow: 0 0 8px 2px $darkish_blue inset;
+        }
+        &:nth-child(2) {
+          border-left: 0;
+        }
+      }
+    }
+  }
 }
 
 .scrolling-list {
@@ -40,15 +95,23 @@ a {
 }
 
 .departures-list {
+  ul {
+    li {
+      padding: 5px 0;
+    }
+  }
   .stop-name {
-    color: #333;
+    color: $dark_green;
     font-weight: bold;
   }
   .route-name {
-    color: #666;
+    font-size: 0.8em;
+    color: $main_green;
     font-weight: bold;
   }
   .departure-time {
+    color: $darkish_green;
+    font-weight: bold;
     float: right;
   }
 }

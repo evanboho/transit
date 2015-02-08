@@ -1,6 +1,7 @@
 <div class="departures-list scrolling-list col-md-3">
-  <% if @models.length: %>
-    <ul>
+  <img class='up-arrow visible-sm-block visible-xs-block' src='/assets/up-arrow-icon-small.png'>
+  <ul>
+    <% if @models.length: %>
       <li class='stop-name'><%= @models[0].get('stop_name') %></li>
       <% for departure in @models: %>
         <li>
@@ -12,8 +13,8 @@
           </div>
         </li>
       <% end %>
-    </ul>
-  <% else: %>
-    <h3>No Departures for that stop.
-  <% end %>
+    <% else: %>
+      <li class='stop-name'>No Departures for that stop.</li>
+    <% end %>
+  </ul>
 </div>

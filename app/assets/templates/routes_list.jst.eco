@@ -1,4 +1,5 @@
 <div class="routes-list scrolling-list col-md-3">
+  <img class='up-arrow visible-sm-block visible-xs-block' src='/assets/up-arrow-icon-small.png'>
   <ul>
     <% for route in @models: %>
       <li>
