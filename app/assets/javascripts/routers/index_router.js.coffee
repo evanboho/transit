@@ -4,4 +4,5 @@ class TransIt.Routers.IndexRouter extends Backbone.Router
     '': 'index'
 
   index: ->
-    alert 'hey'
+    view = new TransIt.Views.AgenciesList
+    $('#outlet').html(view.render().el)

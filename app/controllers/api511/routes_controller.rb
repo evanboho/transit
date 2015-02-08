@@ -2,7 +2,7 @@ class Api511::RoutesController < Api511::Api511Controller
   ROUTE = 'GetRoutesForAgency.aspx'
 
   def index
-    render json: get_xml_from_api(url_to_511, '//Route')
+    render json: NokoProcessor.get_xml_from_api(url_to_511, '//Route')
   end
 
   private

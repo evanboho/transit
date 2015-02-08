@@ -1,4 +1,3 @@
-require 'open-uri'
 class Api511::Api511Controller < ApplicationController
   URL = 'http://services.my511.org/Transit2.0/'
 

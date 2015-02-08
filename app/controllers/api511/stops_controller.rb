@@ -1,8 +1,8 @@
-class StopsController < 511Controller
+class Api511::StopsController < Api511::Api511Controller
   ROUTE = 'GetStopsForRoute.aspx'
 
   def index
-    render json: get_xml_from_api(url_to_511, '//Stop')
+    render json: NokoProcessor.get_xml_from_api(url_to_511, '//Stop')
   end
 
   private
