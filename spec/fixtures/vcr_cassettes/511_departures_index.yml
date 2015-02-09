@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://services.my511.org/Transit2.0/GetNextDeparturesByStopCode.aspx?stopcode=24&token=65a0fa17-c546-4755-a272-52616d81380b
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache="set-cookie"
+      - private
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Tue, 10 Feb 2015 00:11:21 GMT
+      Server:
+      - Microsoft-IIS/7.5
+      Set-Cookie:
+      - AWSELB=F7150B31123F46BEE64744E3F03F4EEF79CF611D3F31AB008722E6EF796E7B373CC5B62F2E02F6334791590CAF374C922A032FA4845BC6B98DE20DF160D3D03D3F628A427A;PATH=/
+      Vary:
+      - Accept-Encoding
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Content-Length:
+      - '294'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "<RTT>\r\n<AgencyList>\r\n<Agency Name=\"BART\" HasDirection=\"False\"
+        Mode=\"Rail\">\r\n<RouteList>\r\n<Route Name=\"Fremont\" Code=\"917\">\r\n<StopList>\r\n<Stop
+        name=\"Union City\" StopCode=\"24\">\r\n<DepartureTimeList>\r\n<DepartureTime>6</DepartureTime>\r\n<DepartureTime>15</DepartureTime>\r\n<DepartureTime>22</DepartureTime>\r\n</DepartureTimeList>\r\n</Stop>\r\n\r\n</StopList>\r\n</Route>\r\n\r\n</RouteList>\r\n</Agency>\r\n\r\n</AgencyList>\r\n</RTT>\r\n"
+    http_version: 
+  recorded_at: Tue, 10 Feb 2015 00:11:27 GMT
+recorded_with: VCR 2.9.3

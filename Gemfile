@@ -43,6 +43,8 @@ gem 'backbone-on-rails'
 group :development, :test do
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
+  gem 'vcr'
+  gem 'webmock'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

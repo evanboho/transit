@@ -7,10 +7,20 @@ window.TransIt =
     @router = new TransIt.Routers.Router()
     Backbone.history.start(pushState: true)
 
+window.Nearby =
+  Models: {}
+  Collections: {}
+  Views: {}
+  Routers: {}
+  init: ->
+    @router = new Nearby.Routers.Router()
+    navigator.geolocation.getCurrentPosition (position) ->
+      Nearby.lat = position.coords.latitude
+      Nearby.long = position.coords.longitude
+      Backbone.history.start(pushState: true)
+
 $ ->
-  TransIt.init()
-  $('#outlet').on 'click', 'a[href*=#]', ->
-    return if $(@).attr('href') == '#'
-    href = $(@).attr('href').replace('#', '')
-    TransIt.router.navigate href, {trigger: true}
-    return false
+  if window.location.match(/\/agencies/)
+    TransIt.init()
+  else
+    Nearby.init()
