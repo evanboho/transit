@@ -1,7 +1,6 @@
 Main =
 
   init: ->
-    @geolocate() if window.location.pathname.match(/\/nearby/)
     @activateNav()
 
   activateNav: ->

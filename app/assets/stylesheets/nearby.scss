@@ -1,0 +1,23 @@
+.nearby-container {
+  width: 60%;
+  margin: 40px auto;
+  .progress-message {
+    font-size: 20px;
+  }
+  ul {
+    list-style-type: none;
+    li {
+      .stop-title {
+        border-bottom: 1px solid #999;
+        font-weight: bold;
+        color: $dark_blue;
+      }
+      .stop-info {
+        min-height: 40px;
+        font-size: 14px;
+      }
+      margin-bottom: 10px;
+    }
+  }
+}
+

@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   end
 
   namespace 'v1' do
+    get 'stops/near', to: 'stops#near', as: 'stops_near'
     resources :stops
   end
 

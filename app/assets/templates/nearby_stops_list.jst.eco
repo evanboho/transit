@@ -1,0 +1,8 @@
+<ul>
+  <% for stop in @models: %>
+    <li data-stop-id="<%= stop.get('id') %>">
+      <div class='stop-title'><%= stop.get('title') %></div>
+      <div class='stop-info'>Fetching Departures...</div>
+    </li>
+  <% end %>
+</ul>
