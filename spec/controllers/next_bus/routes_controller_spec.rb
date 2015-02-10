@@ -1,6 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe NextBus::RoutesController, :type => :controller do
+describe NextBus::RoutesController, :type => :controller do
+  before(:all) do
+    VCR.use_cassette('next_bus_get_remote_agencies') do
+      NextBus.import_remote_agencies
+    end
+    VCR.use_cassette('next_bus_get_routes_for_sf_muni') do
+      NextBus.import_routes_for_agency('sf-muni')
+    end
+  end
 
   describe "GET index" do
     it "returns http success" do

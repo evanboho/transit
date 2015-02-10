@@ -3,10 +3,7 @@ require 'rails_helper'
 describe NextBus::AgenciesController, type: :controller do
   before(:all) do
     VCR.use_cassette('next_bus_get_remote_agencies') do
-      NextBus.get_remote_agencies.each do |agency_attrs|
-        NextBus::Agency.find_by(tag: agency_attrs['tag']) ||
-        NextBus::Agency.create!(agency_attrs)
-      end
+      NextBus.import_remote_agencies
     end
   end
 

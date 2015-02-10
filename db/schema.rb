@@ -1,4 +1,4 @@
- # encoding: UTF-8
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150208011514) do
+ActiveRecord::Schema.define(version: 20150210062622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,8 +42,9 @@ ActiveRecord::Schema.define(version: 20150208011514) do
     t.string   "lon"
     t.string   "stop_id"
     t.string   "agency_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "short_title"
   end
 
   add_index "next_bus_routes", ["agency_id"], name: "index_next_bus_routes_on_agency_id", using: :btree
