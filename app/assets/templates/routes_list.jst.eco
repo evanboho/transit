@@ -3,10 +3,10 @@
   <ul>
     <% for route in @models: %>
       <li>
-        <% href = "#agencies/#{@agencyName}/routes/#{route.get('code')}" %>
+        <% href = "/agencies/#{@agencyName}/routes/#{route.get('code')}" %>
         <% href = href + "/#{route.get('direction_code')}" if route.get('direction_code') %>
         <% href += '/stops' %>
-        <a href='<%= href %>'>
+        <a href='<%= href %>' data-remote='true'>
 
           <% if route.get('direction_code'): %>
             <%= route.get 'name' %>: <%= route.get 'direction_code' %>

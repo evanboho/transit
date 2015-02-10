@@ -7,35 +7,30 @@ class TransIt.Routers.Router extends Backbone.Router
     'agencies/:agencyName/routes/:id(/:direction)/stops/:stopId(/)': 'departuresIndex'
 
   agenciesIndex: (fn) ->
-    render = (data) ->
-      view = new TransIt.Views.AgenciesList
-      $('#outlet').html(view.render(data).el)
-      fn.call(@) if typeof fn == 'function'
+    view = new TransIt.Views.AgenciesList(childRenderFn: fn)
+    insertHtmlFn = _.bind view.insertHtml, view
     agencies = new TransIt.Collections.Agencies
-    if $('#outlet[data-agencies]').length
-      agencies.reset $('#outlet').data('agencies')
-      render(agencies)
-    else
-      agencies.fetch
-        success: render
+    fetchAgencies = ->
+      if $('#outlet[data-agencies]').length
+        agencies.reset $('#outlet').data('agencies')
+        insertHtmlFn agencies
+      else
+        agencies.fetch
+          success: insertHtmlFn
+    fetchAgencies()
 
   routesIndex: (agencyName, fn) ->
     routes = new TransIt.Collections.Routes(agencyName: agencyName)
-    render = (data) ->
-      view = new TransIt.Views.RoutesList
-      $('#route-list-outlet').html(view.render(data).el)
-      if typeof fn == 'function'
-        fn.call(@)
-      else
-        view.scrollToFocus()
+    view = new TransIt.Views.RoutesList(childRenderFn: fn)
+    insertHtmlFn = _.bind view.insertHtml, view
     fetchRoutes = ->
       if $('#outlet[data-routes]').length
         routes.reset $('#outlet').data('routes')
         $('#outlet').removeAttr('data-routes')
-        render routes
+        insertHtmlFn routes
       else
         routes.fetch
-          success: render
+          success: insertHtmlFn
     if $('#outlet').html().length
       fetchRoutes()
     else
@@ -43,43 +38,39 @@ class TransIt.Routers.Router extends Backbone.Router
 
   stopsIndex: (agencyName, routeTag, direction, fn) ->
     stops = new TransIt.Collections.Stops(agencyName: agencyName, routeTag: routeTag, direction: direction)
-    render = (data) ->
-      view = new TransIt.Views.StopsList
-      $('#stop-list-outlet').html(view.render(data).el)
-      if typeof fn == 'function'
-        fn.call(@)
-      else
-        view.scrollToFocus()
+    view = new TransIt.Views.StopsList(childRenderFn: fn)
+    insertHtmlFn = _.bind view.insertHtml, view
     fetchStops = ->
       if $('#outlet[data-stops]').length
         stops.reset $('#outlet').data('stops')
         $('#outlet').removeAttr('data-stops')
-        render stops
+        insertHtmlFn stops
       else
         stops.fetch
-          success: render
-    if $('#route-list-outlet').length
+          success: insertHtmlFn
+    if $('#route-list-outlet').html()?
       fetchStops()
     else
       @routesIndex agencyName, fetchStops
 
   departuresIndex: (agencyName, routeTag, direction, stopId) ->
     departures = new TransIt.Collections.Departures(stopId: stopId)
-    render = (data) ->
-      view = new TransIt.Views.DeparturesList
-      $('#departure-list-outlet').html(view.render(data).el)
-      view.scrollToFocus()
+    view = new TransIt.Views.DeparturesList
+    insertHtmlFn = _.bind view.insertHtml, view
     fetchDepartures = ->
       if $('#outlet[data-departures]').length
         departures.reset $('#outlet').data('departures')
         $('#outlet').removeAttr('data-departures')
-        render departures
+        insertHtmlFn departures
       else
         departures.fetch
-          success: render
-    if $('#stop-list-outlet').length
+          success: insertHtmlFn
+    if $('#stop-list-outlet').html()?
       fetchDepartures()
     else
       @stopsIndex agencyName, routeTag, direction, fetchDepartures
+
+
+
 
 

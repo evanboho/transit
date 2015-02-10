@@ -1,10 +1,11 @@
-class TransIt.Views.StopsList extends Backbone.View
+class TransIt.Views.StopsList extends TransIt.Views.View
 
   template: JST['stops_list']
 
+  outletId: '#stop-list-outlet'
+
   events:
     'click a[data-stop-id]': 'showDepartures'
-    'click img.up-arrow': 'scrollBack'
 
   showDepartures: (e) ->
     e.preventDefault()

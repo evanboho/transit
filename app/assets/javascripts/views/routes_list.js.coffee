@@ -1,6 +1,5 @@
-class TransIt.Views.RoutesList extends Backbone.View
+class TransIt.Views.RoutesList extends TransIt.Views.View
 
   template: JST['routes_list']
 
-  events:
-    'click img.up-arrow': 'scrollBack'
+  outletId: '#route-list-outlet'

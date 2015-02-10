@@ -2,7 +2,7 @@
   <ul>
     <% for agency in @models: %>
       <li>
-        <a href='#agencies/<%= agency.get('name') %>/routes'>
+        <a href='/agencies/<%= agency.get('name') %>/routes' data-remote='true'>
           <%= agency.get('name') %>
         </a>
       </li>

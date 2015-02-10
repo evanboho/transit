@@ -1,6 +1,5 @@
-class TransIt.Views.DeparturesList extends Backbone.View
+class TransIt.Views.DeparturesList extends TransIt.Views.View
 
   template: JST['departures_list']
 
-  events:
-    'click img.up-arrow': 'scrollBack'
+  outletId: '#departure-list-outlet'
