@@ -36,3 +36,6 @@ API
 /511/agencies/departures/<stop id> -> List of departures for that stop
 
 **NextBus**
+/nb/agencies -> List of agencies
+/nb/agencies/<agency tag>/routes -> List of routes
+/nb/agencies/<agency tag>/routes/<route tag>/stops -> List of stops
