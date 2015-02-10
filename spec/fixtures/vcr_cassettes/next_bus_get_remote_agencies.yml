@@ -1,0 +1,114 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://webservices.nextbus.com/service/publicXMLFeed?command=agencyList
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 10 Feb 2015 06:06:29 GMT
+      Server:
+      - Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Frame-Options:
+      - SAMEORIGIN
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '1496'
+      Content-Type:
+      - text/xml
+    body:
+      encoding: UTF-8
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\" ?> \n<body copyright=\"All
+        data copyright agencies listed below and NextBus Inc 2015.\">\n<agency tag=\"actransit\"
+        title=\"AC Transit\" regionTitle=\"California-Northern\"/>\n<agency tag=\"jhu-apl\"
+        title=\"APL\" regionTitle=\"Maryland\"/>\n<agency tag=\"art\" title=\"Asheville
+        Redefines Transit\" regionTitle=\"North Carolina\"/>\n<agency tag=\"camarillo\"
+        title=\"Camarillo Area (CAT)\" shortTitle=\"Camarillo (CAT)\" regionTitle=\"California-Southern\"/>\n<agency
+        tag=\"ccrta\" title=\"Cape Cod Regional Transit Authority\" shortTitle=\"CCRTA\"
+        regionTitle=\"Massachusetts\"/>\n<agency tag=\"chapel-hill\" title=\"Chapel
+        Hill Transit\" shortTitle=\"Chapel Hill\" regionTitle=\"North Carolina\"/>\n<agency
+        tag=\"charles-river\" title=\"Charles River TMA - EZRide\" shortTitle=\"Charles
+        River EZRide\" regionTitle=\"Massachusetts\"/>\n<agency tag=\"charm-city\"
+        title=\"Charm City Circulator\" regionTitle=\"Maryland\"/>\n<agency tag=\"ccny\"
+        title=\"City College NYC\" regionTitle=\"New York\"/>\n<agency tag=\"oxford-ms\"
+        title=\"City of Oxford\" regionTitle=\"Mississippi\"/>\n<agency tag=\"collegetown\"
+        title=\"Collegetown Shuttle\" regionTitle=\"Maryland\"/>\n<agency tag=\"cyride\"
+        title=\"CyRide\" regionTitle=\"Iowa\"/>\n<agency tag=\"dc-circulator\" title=\"DC
+        Circulator\" regionTitle=\"District of Columbia\"/>\n<agency tag=\"da\" title=\"Downtown
+        Connection\" regionTitle=\"New York\"/>\n<agency tag=\"dumbarton\" title=\"Dumbarton
+        Express\" shortTitle=\"Dumbarton Exp\" regionTitle=\"California-Northern\"/>\n<agency
+        tag=\"ecu\" title=\"East Carolina University\" regionTitle=\"North Carolina\"/>\n<agency
+        tag=\"emery\" title=\"Emery-Go-Round\" regionTitle=\"California-Northern\"/>\n<agency
+        tag=\"fairfax\" title=\"Fairfax (CUE)\" regionTitle=\"Virginia\"/>\n<agency
+        tag=\"foothill\" title=\"Foothill Transit\" regionTitle=\"California-Southern\"/>\n<agency
+        tag=\"gmu\" title=\"George Mason University\" regionTitle=\"Virginia\"/>\n<agency
+        tag=\"georgia-college\" title=\"Georgia College\" regionTitle=\"Georgia\"/>\n<agency
+        tag=\"glendale\" title=\"Glendale Beeline\" regionTitle=\"California-Southern\"/>\n<agency
+        tag=\"south-coast\" title=\"Gold Coast Transit\" regionTitle=\"California-Southern\"/>\n<agency
+        tag=\"indianapolis-air\" title=\"Indianapolis International Airport\" regionTitle=\"Indiana\"/>\n<agency
+        tag=\"jta\" title=\"Jacksonville Transportation Authority\" shortTitle=\"Jacksonville\"
+        regionTitle=\"Florida\"/>\n<agency tag=\"jtafla\" title=\"Jacksonville Transportation
+        Authority\" shortTitle=\"Jacksonville\" regionTitle=\"Florida\"/>\n<agency
+        tag=\"lasell\" title=\"Lasell College\" regionTitle=\"Massachusetts\"/>\n<agency
+        tag=\"lametro\" title=\"Los Angeles Metro\" regionTitle=\"California-Southern\"/>\n<agency
+        tag=\"lametro-rail\" title=\"Los Angeles Rail\" regionTitle=\"California-Southern\"/>\n<agency
+        tag=\"mbta\" title=\"MBTA\" regionTitle=\"Massachusetts\"/>\n<agency tag=\"mit\"
+        title=\"Massachusetts Institute of Technology\" shortTitle=\"MIT\" regionTitle=\"Massachusetts\"/>\n<agency
+        tag=\"sf-mission-bay\" title=\"Mission Bay\" regionTitle=\"California-Northern\"/>\n<agency
+        tag=\"moorpark\" title=\"Moorpark Transit\" regionTitle=\"California-Southern\"/>\n<agency
+        tag=\"bronx\" title=\"NYC MTA - Bronx\" regionTitle=\"New York\"/>\n<agency
+        tag=\"brooklyn\" title=\"NYC MTA - Brooklyn\" regionTitle=\"New York\"/>\n<agency
+        tag=\"staten-island\" title=\"NYC MTA - Staten Island\" regionTitle=\"New
+        York\"/>\n<agency tag=\"nctd\" title=\"North County Transit District\" shortTitle=\"NCTD\"
+        regionTitle=\"California-Southern\"/>\n<agency tag=\"omnitrans\" title=\"Omnitrans\"
+        regionTitle=\"California-Southern\"/>\n<agency tag=\"pvpta\" title=\"Palos
+        Verdes Transit\" regionTitle=\"California-Southern\"/>\n<agency tag=\"sria\"
+        title=\"Pensacola Beach (SRIA)\" shortTitle=\"SRIA\" regionTitle=\"Florida\"/>\n<agency
+        tag=\"portland-sc\" title=\"Portland Streetcar\" regionTitle=\"Oregon\"/>\n<agency
+        tag=\"pgc\" title=\"Prince Georges County\" regionTitle=\"Maryland\"/>\n<agency
+        tag=\"reno\" title=\"RTC RIDE, Reno\" regionTitle=\"Nevada\"/>\n<agency tag=\"radford\"
+        title=\"Radford Transit\" regionTitle=\"Virginia\"/>\n<agency tag=\"howard\"
+        title=\"Regional Transportation Agency of Central Maryland\" regionTitle=\"Maryland\"/>\n<agency
+        tag=\"roosevelt\" title=\"Roosevelt Island\" regionTitle=\"New York\"/>\n<agency
+        tag=\"rutgers-newark\" title=\"Rutgers Univ. Newark College Town Shuttle\"
+        shortTitle=\"Rutgers Newark Shuttle\" regionTitle=\"New Jersey\"/>\n<agency
+        tag=\"rutgers\" title=\"Rutgers University\" shortTitle=\"Rutgers\" regionTitle=\"New
+        Jersey\"/>\n<agency tag=\"sf-muni\" title=\"San Francisco Muni\" shortTitle=\"SF
+        Muni\" regionTitle=\"California-Northern\"/>\n<agency tag=\"seattle-sc\" title=\"Seattle
+        Streetcar\" regionTitle=\"Washington\"/>\n<agency tag=\"simi-valley\" title=\"Simi
+        Valley (SVT)\" regionTitle=\"California-Southern\"/>\n<agency tag=\"stl\"
+        title=\"Societe de transport de Laval\" shortTitle=\"Laval\" regionTitle=\"Quebec\"/>\n<agency
+        tag=\"sherbrooke\" title=\"Societe de transport de Sherbrooke\" shortTitle=\"Sherbrooke\"
+        regionTitle=\"Quebec\"/>\n<agency tag=\"temple\" title=\"Temple University\"
+        regionTitle=\"Pennsylvania\"/>\n<agency tag=\"thousand-oaks\" title=\"Thousand
+        Oaks Transit (TOT)\" shortTitle=\"Thousand Oaks Transit\" regionTitle=\"California-Southern\"/>\n<agency
+        tag=\"thunderbay\" title=\"Thunder Bay\" regionTitle=\"Ontario\"/>\n<agency
+        tag=\"ttc\" title=\"Toronto Transit Commission\" shortTitle=\"Toronto TTC\"
+        regionTitle=\"Ontario\"/>\n<agency tag=\"unitrans\" title=\"Unitrans ASUCD/City
+        of Davis\" shortTitle=\"Unitrans\" regionTitle=\"California-Northern\"/>\n<agency
+        tag=\"ucsf\" title=\"University of California San Francisco\" regionTitle=\"California-Northern\"/>\n<agency
+        tag=\"umd\" title=\"University of Maryland\" regionTitle=\"Maryland\"/>\n<agency
+        tag=\"umn-twin\" title=\"University of Minnesota\" regionTitle=\"Minnesota\"/>\n<agency
+        tag=\"vista\" title=\"Ventura Intercity (VISTA)\" shortTitle=\"Ventura (VISTA)\"
+        regionTitle=\"California-Southern\"/>\n<agency tag=\"wku\" title=\"Western
+        Kentucky University\" regionTitle=\"Kentucky\"/>\n<agency tag=\"york-pa\"
+        title=\"York College\" regionTitle=\"Pennsylvania\"/>\n</body>\n"
+    http_version: 
+  recorded_at: Tue, 10 Feb 2015 06:06:30 GMT
+recorded_with: VCR 2.9.3
