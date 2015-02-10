@@ -9,27 +9,28 @@
 </head>
 <body>
 
-<header>
-  <div class='container'>
-    <h1><a href='/'>TransIt</a></h1>
-    <nav>
-      <ul>
-        <li>
-          <a href='/nearby'>Near You</a>
-        </li>
-        <li>
-          <a href='/agencies'>Browse</a>
-        </li>
-      </ul>
-    </nav>
+  <header>
+    <div class='container'>
+      <h1><a href='/'>TransIt</a></h1>
+      <nav>
+        <ul>
+          <li>
+            <a href='/nearby'>Near Me</a>
+          </li>
+          <li>
+            <a href='/agencies'>Browse Agencies</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class='container' data-no-turbolinks>
+    <%= yield %>
   </div>
-</header>
 
-<div class='container'>
-  <%= yield %>
-</div>
+  <%= content_tag 'script', '', id: 'asset-paths', data: { asset_paths: image_paths } %>
 
-<%= content_tag 'script', '', id: 'asset-paths', data: { asset_paths: image_paths } %>
+  </body>
 
-</body>
 </html>
