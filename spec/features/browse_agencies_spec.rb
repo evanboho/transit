@@ -22,8 +22,8 @@ describe 'browse agencies' do
     expect(page).to have_content 'Richmond'
     VCR.use_cassette('511_stops_index_bart_richmond') do
       click_on 'Richmond'
+      expect(page).to have_content 'Montgomery St. (SF)'
     end
-    expect(page).to have_content 'Montgomery St. (SF)'
   end
 
   it 'gets list of stops for Richmond route on load' do

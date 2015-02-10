@@ -24,7 +24,7 @@ namespace :import do
         route.create!(route_attrs)
       end
       puts "Adding stops for: #{route.title}"
-      route_config = NextBus.get_route_config(agency.tag, route.tag)
+      route_config = NextBus.get_stops_for_route(agency.tag, route.tag)
       route_config.each do |stop_attrs|
         stop = route.stops.find_by(tag: stop_attrs['tag'])
         next if stop
