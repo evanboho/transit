@@ -21,7 +21,9 @@ Rails.application.routes.draw do
 
   namespace 'next_bus', path: 'nb' do
     resources :agencies, only: [:index] do
-      resources :routes, only: [:index, :show]
+      resources :routes, only: [:index] do
+        get 'stops', to: 'stops#index'
+      end
     end
   end
 
