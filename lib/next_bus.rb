@@ -26,6 +26,31 @@ module NextBus
     end
   end
 
+  def self.import_routes_for_agency(agency_tag)
+    agency = NextBus::Agency.find_by(tag: agency_tag)
+    unless agency
+      agency_attrs = NextBus.get_remote_agencies(true).detect { |a| a['tag'] == agency_tag }
+      raise "No Agency Found: #{agency_tag}" unless agency_attrs
+      agency = NextBus::Agency.create!(agency_attrs)
+    end
+    routes = NextBus.get_routes_for_agency(agency_tag)
+    routes.each do |route_attrs|
+      route = agency.routes.find_by(tag: route_attrs['tag'])
+      if route
+        route.update(route_attrs)
+      else
+        route = agency.routes.create!(route_attrs)
+      end
+      puts "Adding stops for: #{route.title}"
+      route_config = NextBus.get_stops_for_route(agency.tag, route.tag)
+      route_config.each do |stop_attrs|
+        stop = route.stops.find_by(tag: stop_attrs['tag'])
+        next if stop
+        route.stops.create!(stop_attrs)
+      end
+    end
+  end
+
   def self.get_stops_for_route(agency_tag, route_tag, reload_cache=false)
     url = URL_BASE + "command=routeConfig&a=#{agency_tag}&r=#{route_tag}".gsub(' ', '%20')
     Rails.cache.fetch url, force: reload_cache do
