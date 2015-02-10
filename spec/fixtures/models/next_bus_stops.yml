@@ -1,0 +1,10 @@
+NextBus_Stop_1:
+  id: 1
+  tag: 123
+  title: Fun Stop
+  lat: 123
+  long: 321
+  stop_id: 123
+  route_id: 456
+  created_at: 2014-06-07 16:00:00.000000000 Z
+  updated_at: 2014-06-07 16:00:00.000000000 Z

@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://webservices.nextbus.com/service/publicXMLFeed?a=BART&command=routeList
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 10 Feb 2015 00:41:02 GMT
+      Server:
+      - Apache/2.2.4 (Unix) mod_ssl/2.2.4 OpenSSL/0.9.7m DAV/2 mod_jk/1.2.30
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Frame-Options:
+      - SAMEORIGIN
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '187'
+      Content-Type:
+      - text/xml
+    body:
+      encoding: UTF-8
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\" ?> \n<body copyright=\"All
+        data copyright agencies listed below and NextBus Inc 2015.\">\n<Error shouldRetry=\"false\">\n
+        \ Agency parameter \"a=BART\" is not valid.\n</Error>\n</body>\n"
+    http_version: 
+  recorded_at: Tue, 10 Feb 2015 00:41:02 GMT
+recorded_with: VCR 2.9.3

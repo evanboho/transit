@@ -4,6 +4,9 @@ require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'vcr'
+require 'capybara/rspec'
+require 'capybara/rails'
+require 'capybara/session'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -33,7 +36,17 @@ end
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.fixture_path = "#{::Rails.root}/spec/fixtures/models"
+  config.global_fixtures = :all
+
+  Capybara.register_driver :selenium do |app|
+    profile = Selenium::WebDriver::Firefox::Profile.new
+    profile.native_events = true
+
+    Capybara::Selenium::Driver.new(app, {
+      :profile => profile
+    })
+  end
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
