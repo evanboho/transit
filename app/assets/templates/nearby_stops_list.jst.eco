@@ -1,6 +1,6 @@
-<ul>
+<ul class='nearby-stops-list'>
   <% for stop in @models: %>
-    <li data-stop-id="<%= stop.get('id') %>">
+    <li data-stop-id="<%= stop.get('stop_id') %>">
       <div class='stop-title'><%= stop.get('title') %></div>
       <div class='stop-info'>Fetching Departures...</div>
     </li>

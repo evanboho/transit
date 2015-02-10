@@ -6,17 +6,29 @@
   }
   ul {
     list-style-type: none;
-    li {
-      .stop-title {
-        border-bottom: 1px solid #999;
-        font-weight: bold;
-        color: $dark_blue;
+    &.nearby-stops-list {
+      li {
+        .stop-title {
+          border-bottom: 1px solid #999;
+          font-weight: bold;
+          color: $dark_blue;
+        }
+        .stop-info {
+          min-height: 40px;
+          font-size: 14px;
+        }
+        &.stop {
+          margin-bottom: 10px;
+        }
       }
-      .stop-info {
-        min-height: 40px;
-        font-size: 14px;
+    }
+    &.nearby-departures-list {
+      width: 75%;
+      padding: 0;
+      margin: 10px auto;
+      li:nth-child(2n) {
+        background-color: #e0e0e0;
       }
-      margin-bottom: 10px;
     }
   }
 }

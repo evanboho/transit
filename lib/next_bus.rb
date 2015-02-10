@@ -49,10 +49,14 @@ module NextBus
     puts "Adding stops for: #{route.title}, #{route.tag}"
     route_config = NextBus.get_stops_for_route(agency.tag, route.tag)
     route_config.each do |stop_attrs|
-      stop = route.stops.find_by(tag: stop_attrs['tag'])
-      next if stop
-      route.stops.create!(stop_attrs)
+      import_stop_for_route(route, stop_attrs)
     end
+  end
+
+  def self.import_stop_for_route(route, stop_attrs)
+    stop = route.stops.find_by(tag: stop_attrs['tag'])
+    return if stop
+    route.stops.create!(stop_attrs)
   end
 
   def self.get_stops_for_route(agency_tag, route_tag, reload_cache=false)

@@ -25,23 +25,44 @@ class Nearby.Routers.Router extends Backbone.Router
     _self = @
     $('#nearby-outlet .progress-message').text('Getting stops near you...')
     view = new Nearby.Views.StopsList
-    stops = new Nearby.Collections.Stop
+    stops = new Nearby.Collections.Stops
     stops.fetch
       success: (data) ->
-        $('#nearby-outlet').html(view.render(data).el)
-        clearInterval(_self.progressBar)
+        if data.models.length
+          clearInterval(_self.progressBar)
+          $('#nearby-outlet').html(view.render(data).el)
+          _.each data.models, (model) ->
+            departures = new Nearby.Collections.Departures(stop_id: model.get('stop_id'))
+            departures.fetch
+              success: (data) ->
+                departuresView = new Nearby.Views.DeparturesList
+                $("li[data-stop-id='#{model.get('stop_id')}'] .stop-info").html(departuresView.render(data).el)
 
 class Nearby.Models.Stop extends Backbone.Model
-  url: ''
 
-class Nearby.Collections.Stop extends Backbone.Collection
+class Nearby.Collections.Stops extends Backbone.Collection
   model: Nearby.Models.Stop
   url: ->
     "/v1/stops/near?lat=#{Nearby.lat}&long=#{Nearby.long}"
 
+class Nearby.Models.Departure extends Backbone.Model
+
+class Nearby.Collections.Departures extends Backbone.Collection
+  model: Nearby.Models.Departure
+  initialize: (options) ->
+    @stop_id = options.stop_id
+  url: ->
+    '/511/departures/' + @stop_id
+
 class Nearby.Views.StopsList extends Backbone.View
   template: JST['nearby_stops_list']
 
+  render: (data) ->
+    @.$el.html(@template(data))
+    @
+
+class Nearby.Views.DeparturesList extends Backbone.View
+  template: JST['nearby_departures_list']
   render: (data) ->
     @.$el.html(@template(data))
     @
