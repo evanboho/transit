@@ -1,6 +1,6 @@
 namespace :import do
 
-  task :agencies do
+  task :agencies => :environment do
     NextBus.get_remote_agencies.each do |agency_attrs|
       NextBus::Agency.find_by(tag: agency_attrs['tag']) ||
       NextBus::Agency.create!(agency_attrs)
