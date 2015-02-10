@@ -39,3 +39,8 @@ API
 /nb/agencies -> List of agencies
 /nb/agencies/<agency tag>/routes -> List of routes
 /nb/agencies/<agency tag>/routes/<route tag>/stops -> List of stops
+
+Problems? Solutions.
+--------------------
+To refernce an image in Rails, you need it's digest—a hash appended to the file name to allow for both caching and cache busting. Not having access to the Rails helpers for this in the Backbone view, I made a hash of image paths with digest in a script tag to then have access to it in the Javascript.
+
