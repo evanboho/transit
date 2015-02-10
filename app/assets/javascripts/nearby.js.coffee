@@ -28,15 +28,14 @@ class Nearby.Routers.Router extends Backbone.Router
     stops = new Nearby.Collections.Stops
     stops.fetch
       success: (data) ->
-        if data.models.length
-          clearInterval(_self.progressBar)
-          $('#nearby-outlet').html(view.render(data).el)
-          _.each data.models, (model) ->
-            departures = new Nearby.Collections.Departures(stop_id: model.get('stop_id'))
-            departures.fetch
-              success: (data) ->
-                departuresView = new Nearby.Views.DeparturesList
-                $("li[data-stop-id='#{model.get('stop_id')}'] .stop-info").html(departuresView.render(data).el)
+        clearInterval(_self.progressBar)
+        $('#nearby-outlet').html(view.render(data).el)
+        _.each data.models, (model) ->
+          departures = new Nearby.Collections.Departures(stop_id: model.get('stop_id'))
+          departures.fetch
+            success: (data) ->
+              departuresView = new Nearby.Views.DeparturesList
+              $("li[data-stop-id='#{model.get('stop_id')}'] .stop-info").html(departuresView.render(data).el)
 
 class Nearby.Models.Stop extends Backbone.Model
 
