@@ -4,7 +4,7 @@ module Api511
 
   def self.get_remote_agencies(reload_cache=false)
     url = url_with_token('GetAgencies.aspx')
-    Rails.cache.fetch ['Api511', url], force: reload_cache do
+    Rails.cache.fetch url, force: reload_cache do
       NokoProcessor.get_xml_from_api(url, '//Agency')
     end
   end
@@ -12,7 +12,8 @@ module Api511
   def self.get_routes_for_agency(agency_name, reload_cache=false)
     route = 'GetRoutesForAgency.aspx'
     url = url_with_token(route, "agencyName=#{agency_name}")
-    Rails.cache.fetch ['Api511', url], force: reload_cache do
+    Rails.cache.fetch url, force: reload_cache do
+      Rails.logger.info url
       doc = Nokogiri::XML(open url)
       raise doc.children.first.name if doc.children.first.name =~ /(E|e)rror/
       to_return = []
@@ -36,7 +37,7 @@ module Api511
     route = 'GetStopsForRoute.aspx'
     route_id = [agency_name, route_tag, direction].compact.join('~')
     url = url_with_token(route, "routeIDF=#{route_id}")
-    Rails.cache.fetch ['Api511', url], force: reload_cache do
+    Rails.cache.fetch url, force: reload_cache do
       NokoProcessor.get_xml_from_api(url, '//Stop')
     end
   end
@@ -44,6 +45,7 @@ module Api511
   def self.get_departures_for_stop(stop_id, reload_cache=false)
     route = 'GetNextDeparturesByStopCode.aspx'
     url = url_with_token(route, "stopcode=#{stop_id}")
+    Rails.logger.info url
     doc = Nokogiri::XML(open url)
     to_return = []
     doc.xpath('//DepartureTime').each do |node|
