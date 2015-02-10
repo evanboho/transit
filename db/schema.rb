@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150210062622) do
+ActiveRecord::Schema.define(version: 20150210172629) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,14 +54,15 @@ ActiveRecord::Schema.define(version: 20150210062622) do
   create_table "next_bus_stops", force: :cascade do |t|
     t.string   "tag"
     t.string   "title"
-    t.string   "lat"
-    t.string   "long"
+    t.float    "lat"
+    t.float    "long"
     t.string   "stop_id"
     t.integer  "route_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_index "next_bus_stops", ["lat", "long"], name: "index_next_bus_stops_on_lat_and_long", using: :btree
   add_index "next_bus_stops", ["route_id"], name: "index_next_bus_stops_on_route_id", using: :btree
   add_index "next_bus_stops", ["stop_id"], name: "index_next_bus_stops_on_stop_id", using: :btree
   add_index "next_bus_stops", ["tag"], name: "index_next_bus_stops_on_tag", using: :btree
