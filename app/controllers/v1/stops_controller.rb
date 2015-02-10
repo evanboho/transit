@@ -19,6 +19,7 @@ class V1::StopsController < ApplicationController
       stops.each do |stop|
         stop[:route_name] = routes.select { |route| route.id == stop['route_id'] }
       end
+      stops = stops.group_by { |stop| stop['title'] }.map { |k,v| v.first }
       render json: stops
     else
       render json: { error: "Missing paramters: #{missing_paramters}" }

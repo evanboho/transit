@@ -33,7 +33,7 @@ module NextBus
       raise "No Agency Found: #{agency_tag}" unless agency_attrs
       agency = NextBus::Agency.create!(agency_attrs)
     end
-    routes = NextBus.get_routes_for_agency(agency_tag)
+    routes = NextBus.get_routes_for_agency(agency_tag, true)
     routes.each do |route_attrs|
       import_route_for_agency(agency, route_attrs)
     end
