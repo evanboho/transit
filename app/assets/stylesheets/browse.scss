@@ -1,0 +1,53 @@
+@import 'variables';
+
+.scrolling-list {
+  margin-bottom: 10vh;
+  ul {
+    margin: 0;
+    overflow-y: scroll;
+    height: 90vh;
+    list-style: none;
+    padding: 0;
+    li {
+      padding: 0;
+      a {
+        display: block;
+        padding: 5px 0;
+      }
+    }
+    li:not(:last-child) {
+
+      border-bottom: 1px solid #ccc;
+    }
+  }
+}
+
+.departures-list {
+  ul {
+    li {
+      padding: 5px 0;
+    }
+  }
+  .stop-name {
+    color: $dark_green;
+    font-weight: bold;
+  }
+  .route-name {
+    font-size: 0.8em;
+    color: $main_green;
+    font-weight: bold;
+  }
+  .departure-time {
+    color: $darkish_green;
+    font-weight: bold;
+    float: right;
+  }
+}
+
+img.up-arrow {
+  cursor: pointer;
+  display: block;
+  height: 50px;
+  width: 50px;
+  margin: auto auto;
+}

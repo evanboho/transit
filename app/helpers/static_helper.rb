@@ -7,4 +7,10 @@ module StaticHelper
     end
     to_return
   end
+
+  def nav_logo_specifier
+    return if params[:controller] == 'static'
+    return ": <span class='specifier'>Agencies</span>".html_safe if defined? bootstrap_data
+    ": <span class='specifier'>Near Me</span>".html_safe
+  end
 end
