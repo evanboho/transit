@@ -12,9 +12,10 @@ describe NextBus::RoutesController, :type => :controller do
 
   describe "GET index" do
     it "returns http success" do
-      VCR.use_cassette('next_bus_routes_index_bart') do
-        get :index, agency_id: 'BART'
-        expect(response).to have_http_status(:success)
+      VCR.use_cassette('next_bus_routes_index_sf_muni') do
+        get :index, agency_id: 'sf-muni'
+        json = JSON.parse(response.body)
+        expect(json.length).to eq 82
       end
     end
   end
