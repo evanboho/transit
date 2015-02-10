@@ -3,7 +3,7 @@ class TransIt.Collections.Stops extends Backbone.Collection
 
   url: ->
     u = '/511/agencies/' + @agencyName + '/routes/' + @routeTag
-    u += "/#{@direction}"
+    u += "/#{@direction}" if @direction
     u
 
   initialize: (options) ->

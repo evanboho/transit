@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://services.my511.org/Transit2.0/GetNextDeparturesByStopCode.aspx?stopcode=17&token=65a0fa17-c546-4755-a272-52616d81380b
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache="set-cookie"
+      - private
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Tue, 10 Feb 2015 01:32:10 GMT
+      Server:
+      - Microsoft-IIS/7.5
+      Set-Cookie:
+      - AWSELB=F7150B31123F46BEE64744E3F03F4EEF79CF611D3F988E203D008D7E84C15DAA31E8052C4EC88403001DBC3CF5700ED1ED5FFEC49977D5EC9620B2753B1C6FB530CDD1B1CB;PATH=/
+      Vary:
+      - Accept-Encoding
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Content-Length:
+      - '540'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "<RTT>\r\n<AgencyList>\r\n<Agency Name=\"BART\" HasDirection=\"False\"
+        Mode=\"Rail\">\r\n<RouteList>\r\n<Route Name=\"Concord\" Code=\"886\">\r\n<StopList>\r\n<Stop
+        name=\"Embarcadero (SF)\" StopCode=\"17\">\r\n<DepartureTimeList />\r\n</Stop>\r\n\r\n</StopList>\r\n</Route>\r\n\r\n<Route
+        Name=\"Dublin Pleasanton\" Code=\"920\">\r\n<StopList>\r\n<Stop name=\"Embarcadero
+        (SF)\" StopCode=\"17\">\r\n<DepartureTimeList>\r\n<DepartureTime>8</DepartureTime>\r\n<DepartureTime>23</DepartureTime>\r\n<DepartureTime>38</DepartureTime>\r\n</DepartureTimeList>\r\n</Stop>\r\n\r\n</StopList>\r\n</Route>\r\n\r\n<Route
+        Name=\"Fremont\" Code=\"917\">\r\n<StopList>\r\n<Stop name=\"Embarcadero (SF)\"
+        StopCode=\"17\">\r\n<DepartureTimeList>\r\n<DepartureTime>15</DepartureTime>\r\n<DepartureTime>30</DepartureTime>\r\n<DepartureTime>45</DepartureTime>\r\n</DepartureTimeList>\r\n</Stop>\r\n\r\n</StopList>\r\n</Route>\r\n\r\n<Route
+        Name=\"North Concord\" Code=\"1027\">\r\n<StopList>\r\n<Stop name=\"Embarcadero
+        (SF)\" StopCode=\"17\">\r\n<DepartureTimeList />\r\n</Stop>\r\n\r\n</StopList>\r\n</Route>\r\n\r\n<Route
+        Name=\"Pittsburg Bay Point\" Code=\"908\">\r\n<StopList>\r\n<Stop name=\"Embarcadero
+        (SF)\" StopCode=\"17\">\r\n<DepartureTimeList>\r\n<DepartureTime>4</DepartureTime>\r\n<DepartureTime>10</DepartureTime>\r\n<DepartureTime>19</DepartureTime>\r\n</DepartureTimeList>\r\n</Stop>\r\n\r\n</StopList>\r\n</Route>\r\n\r\n<Route
+        Name=\"Richmond\" Code=\"762\">\r\n<StopList>\r\n<Stop name=\"Embarcadero
+        (SF)\" StopCode=\"17\">\r\n<DepartureTimeList>\r\n<DepartureTime>2</DepartureTime>\r\n<DepartureTime>17</DepartureTime>\r\n<DepartureTime>33</DepartureTime>\r\n</DepartureTimeList>\r\n</Stop>\r\n\r\n</StopList>\r\n</Route>\r\n\r\n</RouteList>\r\n</Agency>\r\n\r\n</AgencyList>\r\n</RTT>\r\n"
+    http_version: 
+  recorded_at: Tue, 10 Feb 2015 01:32:12 GMT
+recorded_with: VCR 2.9.3

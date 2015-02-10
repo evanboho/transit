@@ -1,0 +1,72 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://services.my511.org/Transit2.0/GetStopsForRoute.aspx?routeIDF=BART~762&token=65a0fa17-c546-4755-a272-52616d81380b
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache="set-cookie"
+      - private
+      Content-Type:
+      - text/xml; charset=utf-8
+      Date:
+      - Tue, 10 Feb 2015 01:14:20 GMT
+      Server:
+      - Microsoft-IIS/7.5
+      Set-Cookie:
+      - AWSELB=F7150B31123F46BEE64744E3F03F4EEF79CF611D3F8475F7657FD0EF3DE888DBF00FF9B6C2C88403001DBC3CF5700ED1ED5FFEC49977D5EC9620B2753B1C6FB530CDD1B1CB;PATH=/
+      Vary:
+      - Accept-Encoding
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Content-Length:
+      - '691'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: "<RTT>\r\n<AgencyList>\r\n<Agency Name=\"BART\" HasDirection=\"False\"
+        Mode=\"Rail\">\r\n<RouteList>\r\n<Route Name=\"Richmond\" Code=\"762\">\r\n<StopList>\r\n<Stop
+        name=\"Civic Center (SF)\" StopCode=\"11\">\r\n</Stop>\r\n\r\n<Stop name=\"Powell
+        St. (SF)\" StopCode=\"13\">\r\n</Stop>\r\n\r\n<Stop name=\"Montgomery St.
+        (SF)\" StopCode=\"15\">\r\n</Stop>\r\n\r\n<Stop name=\"Embarcadero (SF)\"
+        StopCode=\"17\">\r\n</Stop>\r\n\r\n<Stop name=\"West Oakland\" StopCode=\"19\">\r\n</Stop>\r\n\r\n<Stop
+        name=\"Fremont\" StopCode=\"21\">\r\n</Stop>\r\n\r\n<Stop name=\"Union City\"
+        StopCode=\"23\">\r\n</Stop>\r\n\r\n<Stop name=\"South Hayward\" StopCode=\"25\">\r\n</Stop>\r\n\r\n<Stop
+        name=\"Hayward\" StopCode=\"27\">\r\n</Stop>\r\n\r\n<Stop name=\"Bayfair (San
+        Leandro)\" StopCode=\"29\">\r\n</Stop>\r\n\r\n<Stop name=\"San Leandro\" StopCode=\"31\">\r\n</Stop>\r\n\r\n<Stop
+        name=\"Coliseum/Oakland Airport\" StopCode=\"33\">\r\n</Stop>\r\n\r\n<Stop
+        name=\"Fruitvale (Oakland)\" StopCode=\"35\">\r\n</Stop>\r\n\r\n<Stop name=\"Lake
+        Merritt (Oakland)\" StopCode=\"37\">\r\n</Stop>\r\n\r\n<Stop name=\"Richmond\"
+        StopCode=\"39\">\r\n</Stop>\r\n\r\n<Stop name=\"El Cerrito Del Norte\" StopCode=\"41\">\r\n</Stop>\r\n\r\n<Stop
+        name=\"El Cerrito Plaza\" StopCode=\"43\">\r\n</Stop>\r\n\r\n<Stop name=\"North
+        Berkeley\" StopCode=\"45\">\r\n</Stop>\r\n\r\n<Stop name=\"Downtown Berkeley\"
+        StopCode=\"47\">\r\n</Stop>\r\n\r\n<Stop name=\"Ashby (Berkeley)\" StopCode=\"49\">\r\n</Stop>\r\n\r\n<Stop
+        name=\"MacArthur (Oakland)\" StopCode=\"63\">\r\n</Stop>\r\n\r\n<Stop name=\"19th
+        St. Oakland\" StopCode=\"65\">\r\n</Stop>\r\n\r\n<Stop name=\"12th St. Oakland
+        City Center\" StopCode=\"67\">\r\n</Stop>\r\n\r\n<Stop name=\"Colma\" StopCode=\"71\">\r\n</Stop>\r\n\r\n<Stop
+        name=\"South San Francisco\" StopCode=\"79\">\r\n</Stop>\r\n\r\n<Stop name=\"San
+        Bruno\" StopCode=\"81\">\r\n</Stop>\r\n\r\n<Stop name=\"Millbrae\" StopCode=\"83\">\r\n</Stop>\r\n\r\n<Stop
+        name=\"Daly City\" StopCode=\"91\">\r\n</Stop>\r\n\r\n<Stop name=\"Balboa
+        Park (SF)\" StopCode=\"93\">\r\n</Stop>\r\n\r\n<Stop name=\"Glen Park (SF)\"
+        StopCode=\"95\">\r\n</Stop>\r\n\r\n<Stop name=\"24th St. Mission (SF)\" StopCode=\"97\">\r\n</Stop>\r\n\r\n<Stop
+        name=\"16th St. Mission (SF)\" StopCode=\"99\">\r\n</Stop>\r\n\r\n</StopList>\r\n</Route>\r\n\r\n</RouteList>\r\n</Agency>\r\n\r\n</AgencyList>\r\n</RTT>\r\n"
+    http_version: 
+  recorded_at: Tue, 10 Feb 2015 01:14:22 GMT
+recorded_with: VCR 2.9.3

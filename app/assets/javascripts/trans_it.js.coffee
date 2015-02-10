@@ -20,7 +20,7 @@ window.Nearby =
       Backbone.history.start(pushState: true)
 
 $ ->
-  if window.location.match(/\/agencies/)
+  if window.location.toString().match(/\/agencies/)
     TransIt.init()
   else
     Nearby.init()

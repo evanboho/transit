@@ -3,7 +3,7 @@ require 'rails_helper'
 describe Api511::RoutesController do
 
   it 'returns routes for agency' do
-    VCR.use_cassette('511_routes_index') do
+    VCR.use_cassette('511_routes_index_bart') do
       get :index, agency_id: 'BART', reload: true
     end
     json = JSON.parse response.body
