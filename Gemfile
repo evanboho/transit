@@ -40,6 +40,8 @@ gem 'underscore-rails'
 
 gem 'backbone-on-rails'
 
+gem 'geocoder'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
