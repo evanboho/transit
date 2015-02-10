@@ -1,0 +1,4 @@
+<div class='no-stops-near-you'>
+  <h4>We could not find any stops within <%= @radius %> miles of you.</h4>
+  <a class='btn btn-primary increase-radius'>Increase Search Radius</a>
+</div>

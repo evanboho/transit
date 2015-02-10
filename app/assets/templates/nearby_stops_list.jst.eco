@@ -1,4 +1,5 @@
 <ul class='nearby-stops-list'>
+  <h4>Stops within <%= @radius %> miles of you.</h4>
   <% for stop in @models: %>
     <li data-stop-id="<%= stop.get('stop_id') %>">
       <div class='stop-title'><%= stop.get('title') %></div>

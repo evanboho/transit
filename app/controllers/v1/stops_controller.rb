@@ -10,7 +10,7 @@ class V1::StopsController < ApplicationController
 
   def near
     if params[:lat] && params[:long]
-      sql = NextBus::Stop.near([params[:lat], params[:long]], 0.25).limit(10).to_sql
+      sql = NextBus::Stop.near([params[:lat], params[:long]], (params[:radius] || 0.25).to_f).limit(20).to_sql
       results = NextBus::Stop.connection.execute(sql)
       stops = results.values.map do |value|
         Hash[results.fields.zip(value)]
@@ -19,7 +19,7 @@ class V1::StopsController < ApplicationController
       stops.each do |stop|
         stop[:route_name] = routes.select { |route| route.id == stop['route_id'] }
       end
-      stops = stops.group_by { |stop| stop['title'] }.map { |k,v| v.first }
+      stops = stops.group_by { |stop| stop['tag'] }.map { |k,v| v.first }
       render json: stops
     else
       render json: { error: "Missing paramters: #{missing_paramters}" }
