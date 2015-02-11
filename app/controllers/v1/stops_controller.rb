@@ -1,7 +1,12 @@
 class V1::StopsController < ApplicationController
 
   def index
-    render json: NextBus::Stop.all
+    sql = NextBus::Stop.all.to_sql
+    results = NextBus::Stop.connection.execute(sql)
+    stops = results.values.map do |value|
+      Hash[results.fields.zip(value)]
+    end
+    render json: results
   end
 
   def show

@@ -6,6 +6,7 @@
     font-size: 20px;
   }
   ul {
+    padding: 0;
     list-style-type: none;
     &.nearby-stops-list {
       li {
@@ -24,11 +25,24 @@
       }
     }
     &.nearby-departures-list {
-      width: 75%;
+      width: 85%;
       padding: 0;
       margin: 10px auto;
       li:nth-child(2n) {
         background-color: #e0e0e0;
+        border-bottom: 1px solid #666;
+      }
+      li:nth-child(2n-1) {
+        border-bottom: 1px solid #aaa;
+      }
+      li {
+        padding: 0 10px;
+      }
+      .departure-time {
+        margin-top: 2px;
+        font-size: 26px;
+        font-weight: bold;
+        color: $dark_blue;
       }
     }
   }

@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :v1 do
-  get 'stops/index'
-  end
-
-  namespace :v1 do
-  get 'stops/show'
-  end
-
   get '/nearby', to: 'static#nearby'
 
   namespace 'api511', path: '511' do
@@ -32,7 +24,10 @@ Rails.application.routes.draw do
 
   namespace 'v1' do
     get 'stops/near', to: 'stops#near', as: 'stops_near'
-    resources :stops
+    resources :routes, only: [:index, :show] do
+      resources :stops, only: [:index, :show]
+    end
+    resources :stops, only: [:index, :show]
   end
 
   resources :agencies, only: [:index] do

@@ -1,12 +1,18 @@
 <ul class='nearby-departures-list'>
   <% for departure in @models: %>
     <li class='clearfix'>
-      <div class='pull-left route-name'>
-        <%= departure.get('route_name') %>
+      <div class='pull-left'>
+        <div class='route-name'>
+          <%= departure.get('route_name') %>
+        </div>
+
+        <div class='direction'>
+          <%= departure.get('direction') %>
+        </div>
       </div>
 
       <div class='pull-right departure-time'>
-        <%= departure.get('departure_time') %>
+        <%= departure.get('minutes') %>
       </div>
 
     </li>

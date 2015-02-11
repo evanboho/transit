@@ -57,7 +57,7 @@ class Nearby.Collections.Departures extends Backbone.Collection
   initialize: (options) ->
     @stop_id = options.stop_id
   url: ->
-    '/511/departures/' + @stop_id
+    '/nb/agencies/sf-muni/departures/' + @stop_id
 
 class Nearby.Views.StopsList extends Backbone.View
   template: JST['nearby_stops_list']
