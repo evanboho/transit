@@ -52,6 +52,10 @@ To reference an image in Rails, you need its digest—a hash appended to the fil
 
 **TODO**: Add a BART API for both a proxy and a way of importing stops for geolocating.
 
+**TODO**: Add specs for Nearby.
+
+**TODO**: Add active class to Browse links.
+
 Contributing
 ------------
 Fork it. Pull Request it.
