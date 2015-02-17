@@ -14,4 +14,15 @@ describe Bart::RoutesController, type: :controller do
     expect(json.map { |a| a['color'] }).to eq ["#ffff33", "#0099cc", "#339933", "#0099cc", "#339933", "#ff9933", "#ff0000", "#ff9933", "#ff0000", "#ffff33", "#d5cfa3", "#d5cfa3"]
   end
 
+  it 'gets show' do
+    VCR.use_cassette('bart_routes_show_8') do
+      get :show, id: 8
+    end
+    json = JSON.parse response.body
+    expect(json['name']).to eq 'Millbrae/Daly City - Richmond'
+    expect(json['abbr']).to eq 'MLBR-RICH'
+    expect(json['routeID']).to eq 'ROUTE 8'
+    expect(json['number']).to eq '8'
+  end
+
 end

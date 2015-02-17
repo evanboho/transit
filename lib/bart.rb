@@ -2,13 +2,26 @@ require 'open-uri'
 module Bart
   URL_BASE='http://api.bart.gov/api/'
 
-  def self.get_routes
+  def self.get_routes(reload=false)
     url = url_with_token('route.aspx', { cmd: 'routes' })
-    Rails.cache.fetch url do
+    Rails.cache.fetch url, force: reload do
       doc = Nokogiri::XML(open url)
       doc.xpath('//route').map do |route_node|
         Hash[route_node.children.map { |node| [node.name, node.text] }]
       end
+    end
+  end
+
+  def self.get_route(route_id, reload=false)
+    url = url_with_token('route.aspx', { cmd: 'routeinfo', route: route_id })
+    Rails.cache.fetch url, force: reload do
+      doc = Nokogiri::XML(open url)
+      route_node = doc.xpath('//route[1]')
+      to_return = Hash[route_node.children.map { |node| [node.name, node.text] }]
+      to_return['config'] = route_node.xpath('//config').children.map do |station_node|
+        station_node.text
+      end
+      to_return
     end
   end
 

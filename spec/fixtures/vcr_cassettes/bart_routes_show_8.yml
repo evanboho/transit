@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.bart.gov/api/route.aspx?cmd=routeinfo&key=Z7VL-JP6U-IY2Q-DT35&route=8
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Pragma:
+      - no-cache
+      Content-Type:
+      - text/xml; charset=utf-8
+      Expires:
+      - "-1"
+      Vary:
+      - Accept-Encoding
+      Server:
+      - Microsoft-IIS/7.5
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Aspnet-Version:
+      - 2.0.50727
+      X-Powered-By:
+      - ASP.NET
+      Date:
+      - Tue, 17 Feb 2015 03:08:40 GMT
+      Content-Length:
+      - '570'
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="utf-8"?><root><uri><![CDATA[http://api.bart.gov/api/route.aspx?cmd=routeinfo&route=8]]></uri><sched_num>35</sched_num><routes><route><name>Millbrae/Daly
+        City - Richmond</name><abbr>MLBR-RICH</abbr><routeID>ROUTE 8</routeID><number>8</number><origin>MLBR</origin><destination>RICH</destination><direction></direction><color>#ff0000</color><holidays>0</holidays><num_stns>23</num_stns><config><station>MLBR</station><station>SBRN</station><station>SSAN</station><station>COLM</station><station>DALY</station><station>BALB</station><station>GLEN</station><station>24TH</station><station>16TH</station><station>CIVC</station><station>POWL</station><station>MONT</station><station>EMBR</station><station>WOAK</station><station>12TH</station><station>19TH</station><station>MCAR</station><station>ASHB</station><station>DBRK</station><station>NBRK</station><station>PLZA</station><station>DELN</station><station>RICH</station></config></route></routes><message
+        /></root>
+    http_version: 
+  recorded_at: Tue, 17 Feb 2015 03:08:42 GMT
+recorded_with: VCR 2.9.3
