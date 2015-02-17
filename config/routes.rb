@@ -30,12 +30,20 @@ Rails.application.routes.draw do
     resources :stops, only: [:index, :show]
   end
 
+  namespace 'bart' do
+    resources :stops, only: [:show] do
+      resources :departures, only: [:show]
+    end
+    resources :departures, only: [:index]
+  end
+
   resources :agencies, only: [:index] do
     resources :routes, only: [:index] do
       get '(:direction)/stops', to: 'stops#index', as: 'stops'
       get '(:direction)/stops/:stop_id', to: 'departures#index', as: 'stop_departures'
     end
   end
+
 
   root to: 'static#home'
 
