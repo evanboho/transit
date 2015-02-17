@@ -60,4 +60,4 @@ Contributing
 ------------
 Fork it. Pull Request it.
 
-You'll need Rails 4.2 and Postgres. You won't
+You'll need Rails 4.2 and Postgres.
