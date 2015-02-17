@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   end
 
   namespace 'bart' do
+    resources :routes, only: :index
     resources :stops, only: [:show] do
       resources :departures, only: [:show]
     end

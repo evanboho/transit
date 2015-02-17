@@ -42,6 +42,10 @@ gem 'backbone-on-rails'
 
 gem 'geocoder'
 
+gem 'oj'
+
+gem 'puma'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'spring-commands-rspec'

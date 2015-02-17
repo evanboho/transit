@@ -1,5 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Bart::DeparturesController, :type => :controller do
+describe Bart::DeparturesController, type: :controller do
+
+  it 'gets routes' do
+  end
 
 end
