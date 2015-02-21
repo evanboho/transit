@@ -4,6 +4,13 @@ window.Nearby =
   Views: {}
   Routers: {}
   init: ->
+    if sessionStorage && sessionStorage.getItem('transIt')
+      store = JSON.parse sessionStorage.getItem('transIt')
+      try
+        storedAt = Date.parse(store.storedAt)
+        if new Date - storedAt < 60000
+          Nearby.store = store
+    Nearby.store ||= {}
     @router = new Nearby.Routers.Router()
     width = 15
     _self = @
@@ -11,10 +18,16 @@ window.Nearby =
       $('.progress-bar').stop().animate(width: "#{width += 15}%", 200)
       clearInterval(_self.progressBar) if width >= 85
     , 350
-    navigator.geolocation.getCurrentPosition (position) ->
-      Nearby.lat = position.coords.latitude
-      Nearby.long = position.coords.longitude
-      Nearby.radius = 0.25
+    if !(Nearby.store.lat && Nearby.store.long)
+      navigator.geolocation.getCurrentPosition (position) ->
+        Nearby.store.lat = position.coords.latitude
+        Nearby.store.long = position.coords.longitude
+        Nearby.store.radius = 0.25
+        Nearby.store.storedAt = new Date()
+        if sessionStorage
+          sessionStorage.setItem('transIt', JSON.stringify(Nearby.store))
+        Backbone.history.start(pushState: true)
+    else
       Backbone.history.start(pushState: true)
 
 class Nearby.Routers.Router extends Backbone.Router
@@ -48,7 +61,7 @@ class Nearby.Models.Stop extends Backbone.Model
 class Nearby.Collections.Stops extends Backbone.Collection
   model: Nearby.Models.Stop
   url: ->
-    "/v1/stops/near?lat=#{Nearby.lat}&long=#{Nearby.long}&radius=#{Nearby.radius}"
+    "/v1/stops/near?lat=#{Nearby.store.lat}&long=#{Nearby.store.long}&radius=#{Nearby.store.radius}"
 
 class Nearby.Models.Departure extends Backbone.Model
 
@@ -78,7 +91,9 @@ class Nearby.Views.NoStops extends Backbone.View
     'click .increase-radius': 'increaseRadius'
 
   increaseRadius: ->
-    Nearby.radius = Nearby.radius * 2
+    Nearby.store.radius = Nearby.store.radius * 2
+    if sessionStorage
+      sessionStorage.setItem('transIt', JSON.stringify(Nearby.store))
     Nearby.router.stopsIndex()
 
 $ ->

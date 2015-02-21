@@ -25,9 +25,11 @@ Rails.application.routes.draw do
   namespace 'v1' do
     get 'stops/near', to: 'stops#near', as: 'stops_near'
     resources :routes, only: [:index, :show] do
-      resources :stops, only: [:index, :show]
+      resources :stops, only: [:index] do
+        get 'departures', to: 'departures#index'
+      end
     end
-    resources :stops, only: [:index, :show]
+    get 'departures/:stop_id', to: 'departures#index'
   end
 
   namespace 'bart' do
@@ -35,7 +37,8 @@ Rails.application.routes.draw do
     resources :stops, only: [:show] do
       resources :departures, only: [:show]
     end
-    resources :departures, only: [:index]
+    resources :stops, only: [:index, :show]
+    get 'departures/:stop_id(/:direction)', to: 'departures#index'
   end
 
   resources :agencies, only: [:index] do

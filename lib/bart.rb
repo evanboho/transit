@@ -25,8 +25,30 @@ module Bart
     end
   end
 
-  def self.get_departures
+  def self.get_departures_for_stop(station_id, direction=nil, reload=false)
+    direction = direction[0].downcase if direction.present?
+    url = url_with_token('etd.aspx', { cmd: 'etd', orig: station_id, dir: direction })
+    Rails.logger.info url
+    doc = Nokogiri::XML(open url)
+    doc.xpath('//estimate').map do |est_node|
+      node_hash = Hash[est_node.children.map { |child_node|
+        [child_node.name, child_node.text]
+      }]
+      node_hash[:destination] = est_node.xpath('preceding-sibling::destination').first.text
+      node_hash[:station_name] = est_node.xpath('ancestor::station/name').text
+      node_hash
+    end
+  end
 
+  def self.get_stations
+    url = url_with_token('stn.aspx', { cmd: 'stns'})
+    Rails.logger.info url
+    Rails.cache.fetch url do
+      doc = Nokogiri::XML(open url)
+      doc.xpath('//station').map do |station_node|
+        Hash[station_node.children.map { |node| [node.name, node.text ]}]
+      end
+    end
   end
 
   def self.get_departures_for_route(route_tag)
@@ -37,7 +59,9 @@ module Bart
 
   def self.url_with_token(route, url_params={})
     url_params[:key] = SITE_CONFIG[:api_token_bart]
-    url_params = url_params.map { |k,v| k.to_s + '=' + v }
+    url_params = url_params.map { |k,v|
+      k.to_s + '=' + v if v.present?
+    }.compact
     (URL_BASE + route + '?' + url_params.join('&')).gsub(' ', '%20')
   end
 

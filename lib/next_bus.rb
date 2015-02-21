@@ -69,12 +69,10 @@ module NextBus
 
   def self.get_departures_for_stop(agency_tag, stop_id)
     url = URL_BASE + "command=predictions&a=#{agency_tag}&stopId=#{stop_id}"
-    # NokoProcessor.get_xml_from_api(url, '//prediction')
     doc = Nokogiri::XML(open url)
     raise doc.children.first.name if doc.children.first.name =~ /(E|e)rror/
     Rails.logger.info url
-    to_return = []
-    doc.xpath('//prediction').each do |node|
+    doc.xpath('//prediction').map do |node|
       attrs = node.attributes.map do |k,v|
         [k.underscore, v.value]
       end
@@ -86,9 +84,8 @@ module NextBus
       node_hash[:route_tag] = predictions_node.attribute('routeTag').value
       node_hash[:stop_title] = predictions_node.attribute('stopTitle').value
       node_hash[:stop_tag] = predictions_node.attribute('stopTag').value
-      to_return << node_hash
+      node_hash
     end
-    to_return
   end
 
 end
