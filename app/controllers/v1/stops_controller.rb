@@ -15,7 +15,7 @@ class V1::StopsController < ApplicationController
 
   def near
     if params[:lat] && params[:long]
-      render json: next_bus_stops + bart_stops
+      render json: bart_stops + next_bus_stops
     else
       render json: { error: "Missing paramters: #{missing_paramters}" }
     end
@@ -31,7 +31,7 @@ class V1::StopsController < ApplicationController
     sql = NextBus::Stop.near(*lat_long_rad_params).limit(20).to_sql
     results = NextBus::Stop.connection.execute(sql)
     stops = results.values.map do |value|
-      Hash[results.fields.zip(value)]
+      Hash[results.fields.zip(value)].merge(next_bus: true)
     end
     routes = NextBus::Route.where(id: stops.map { |stop| stop['route_id'] })
     stops.each do |stop|
@@ -44,7 +44,7 @@ class V1::StopsController < ApplicationController
     sql = Bart::Stop.near(*lat_long_rad_params).to_sql
     results = NextBus::Stop.connection.execute(sql)
     results.values.map do |value|
-      Hash[results.fields.zip(value)]
+      Hash[results.fields.zip(value)].merge(bart: true)
     end
   end
 

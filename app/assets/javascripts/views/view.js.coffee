@@ -11,8 +11,7 @@ class TransIt.Views.View extends Backbone.View
   @current: {}
 
   render: (data)  ->
-    @.$el.html(@template(_.extend data, @viewHelpers))
-    this
+    @.$el.html(@template(_.extend data, @viewHelpers)) && @
 
   scrollToFocus: ($el) ->
     if $('img.up-arrow').is(':visible')

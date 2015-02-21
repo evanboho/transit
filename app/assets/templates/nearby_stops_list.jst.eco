@@ -1,8 +1,16 @@
+<div class='clearfix'>
+<h4 class='pull-left'>Stops within <%= @radius %> miles of you.</h4>
+<a href='#' class='nearby-refresh'>
+  Refresh
+</a>
+<a href='#' class='nearby-expand'>
+  Expand
+</a>
+</div>
 <ul class='nearby-stops-list'>
-  <h4>Stops within <%= @radius %> miles of you.</h4>
   <% for stop in @models: %>
-    <li data-stop-id="<%= stop.get('stop_id') %>">
-      <div class='stop-title'><%= stop.get('title') %></div>
+    <li data-stop-id="<%= stop.get('stop_id') || stop.get('id') %>">
+      <div class='stop-title'><%= stop.get('title') || stop.get('name') %></div>
       <div class='stop-info'>Fetching Departures...</div>
     </li>
   <% end %>

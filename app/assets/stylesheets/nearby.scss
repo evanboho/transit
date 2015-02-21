@@ -44,12 +44,20 @@
         font-weight: bold;
         color: $dark_blue;
       }
+      .route-name {
+        font-weight: bold;
+      }
     }
   }
   .increase-radius {
     display: block;
     width: 50%;
     margin: 40px auto;
+  }
+  .nearby-refresh, .nearby-expand {
+    float: right;
+    padding: 9px 5px;
+    color: $darkish_blue;
   }
 }
 

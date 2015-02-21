@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   namespace 'bart' do
     resources :routes, only: [:index, :show]
     resources :stops, only: [:show] do
-      resources :departures, only: [:show]
+      resources :departures, only: [:index]
     end
     resources :stops, only: [:index, :show]
     get 'departures/:stop_id(/:direction)', to: 'departures#index'

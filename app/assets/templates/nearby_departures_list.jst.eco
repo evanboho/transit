@@ -3,7 +3,7 @@
     <li class='clearfix'>
       <div class='pull-left'>
         <div class='route-name'>
-          <%= departure.get('route_name') %>
+          <%= departure.get('destination') || departure.get('route_name') %>
         </div>
 
         <div class='direction'>
