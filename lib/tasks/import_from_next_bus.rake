@@ -5,7 +5,7 @@ namespace :import do
   end
 
   task :routes, [:agency_tag] => :environment do |t, args|
-    NextBus.import_routes_for_agency args.agency_tag
+    NextBus.import_routes_for_agency tag
   end
 
 end

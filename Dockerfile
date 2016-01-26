@@ -1,0 +1,19 @@
+FROM webapp:ruby-2.2.1
+
+WORKDIR /tmp
+ADD Gemfile Gemfile
+Add Gemfile.lock Gemfile.lock
+RUN bundle install
+
+ADD . /app
+
+WORKDIR /app
+
+ENV SECRET_KEY_BASE 1b581a67938a5656de87e84a2b25da1a652ce7f6bdb29d6e71596925081a048538c870a37e02033a368e69dbf2bd1bd69c5610f1797043103b1f73aef82bcba1
+
+ENV POSTGRES_PASSWORD Uee$5b*n#dfg%^BH
+ENV API_TOKEN_BART Z7VL-JP6U-IY2Q-DT35
+ENV API_TOKEN_511 65a0fa17-c546-4755-a272-52616d81380b
+
+RUN rake assets:precompile
+# TODO assets
