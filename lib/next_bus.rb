@@ -28,7 +28,8 @@ module NextBus
   end
 
   def self.import_routes_for_agency(agency_tag)
-    agency = NextBus::Agency.find_by(tag: agency_tag)
+    agency = agency_tag.is_a?(NextBus::Agency) ? agency_tag : NextBus::Agency.find_by(tag: agency_tag)
+    agency_tag = agency.tag
     unless agency
       agency_attrs = NextBus.get_remote_agencies(true).detect { |a| a['tag'] == agency_tag }
       raise "No Agency Found: #{agency_tag}" unless agency_attrs
